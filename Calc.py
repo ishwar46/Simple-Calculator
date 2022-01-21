@@ -1,110 +1,231 @@
-#Simple Arithmetic Calculator using grid method.
-
+#SIMPLE GUI CALCULATOR USING TKINTER
+import tkinter
 from tkinter import *
+from tkinter import messagebox
 
-calculator = Tk()
-calculator.geometry("312x324")
-calculator.resizable(0, 0)
-calculator.title("Calculator")
+root = tkinter.Tk()
+root.geometry("250x400+300+300")
+root.resizable(0, 0)
+root.title("Calculator")
 
-def btn_click(item):
-    global expression
-    expression = expression + str(item)
-    text.set(expression)
+#Defining Variables and operators
+val = ""
+A = 0
+operator = "+"
 
-
-def btn_clear():
-    global expression
-    expression = ""
-    text.set("")
-
-def bt_equal():
-    global expression
-    result = str(eval(expression))
-    text.set(result)
-    expression = ""
+#DEFINING FUCTION OF BUTTONS
+def btn1_click():
+    global val
+    val = val + "1"
+    data.set(val)
 
 
-expression = ""
-
-text = StringVar()
-
-input_frame = Frame(calculator, width=312, height=50, bd=0, highlightbackground="#35858B", highlightcolor="#35858B",
-                    highlightthickness=2)
-
-input_frame.pack(side=TOP)
+def btn2_click():
+    global val
+    val = val + "2"
+    data.set(val)
 
 
-input_field = Entry(input_frame, font=('Poppins', 20, 'bold'), textvariable=text, width=50, bg="#4FBDBA", bd=0,
-                    justify=RIGHT)
+def btn3_click():
+    global val
+    val = val + "3"
+    data.set(val)
 
-input_field.grid(row=0, column=0)
 
-input_field.pack(ipady=10)
+def btn4_click():
+    global val
+    val = val + "4"
+    data.set(val)
 
-btns_frame = Frame(calculator, width=312, height=272.5, bg="#35858B")
 
-btns_frame.pack()
+def btn5_click():
+    global val
+    val = val + "5"
+    data.set(val)
 
-# 1st row
 
-clear = Button(btns_frame, text="C", fg="blue", width=32, height=3, bd=0, bg="#92A9BD", cursor="hand2",
-               command=lambda: btn_clear()).grid(row=0, column=0, columnspan=3, padx=1, pady=1)
+def btn6_click():
+    global val
+    val = val + "6"
+    data.set(val)
 
-divide = Button(btns_frame, text="/", fg="black", width=10, height=3, bd=0, bg="#92A9BD", cursor="hand2",
-                command=lambda: btn_click("/")).grid(row=0, column=3, padx=1, pady=1)
 
-# 2nd row
+def btn7_click():
+    global val
+    val = val + "7"
+    data.set(val)
 
-seven = Button(btns_frame, text="7", fg="black", width=10, height=3, bd=0, bg="#F2FFE9", cursor="hand2",
-               command=lambda: btn_click(7)).grid(row=1, column=0, padx=1, pady=1)
 
-eight = Button(btns_frame, text="8", fg="black", width=10, height=3, bd=0, bg="#F2FFE9", cursor="hand2",
-               command=lambda: btn_click(8)).grid(row=1, column=1, padx=1, pady=1)
+def btn8_click():
+    global val
+    val = val + "8"
+    data.set(val)
 
-nine = Button(btns_frame, text="9", fg="black", width=10, height=3, bd=0, bg="#F2FFE9", cursor="hand2",
-              command=lambda: btn_click(9)).grid(row=1, column=2, padx=1, pady=1)
 
-multiply = Button(btns_frame, text="*", fg="black", width=10, height=3, bd=0, bg="#92A9BD", cursor="hand2",
-                  command=lambda: btn_click("*")).grid(row=1, column=3, padx=1, pady=1)
+def btn9_click():
+    global val
+    val = val + "9"
+    data.set(val)
 
-# 3rd row
 
-four = Button(btns_frame, text="4", fg="black", width=10, height=3, bd=0, bg="#F2FFE9", cursor="hand2",
-              command=lambda: btn_click(4)).grid(row=2, column=0, padx=1, pady=1)
+def btn0_click():
+    global val
+    val = val + "0"
+    data.set(val)
 
-five = Button(btns_frame, text="5", fg="black", width=10, height=3, bd=0, bg="#F2FFE9", cursor="hand2",
-              command=lambda: btn_click(5)).grid(row=2, column=1, padx=1, pady=1)
 
-six = Button(btns_frame, text="6", fg="black", width=10, height=3, bd=0, bg="#F2FFE9", cursor="hand2",
-             command=lambda: btn_click(6)).grid(row=2, column=2, padx=1, pady=1)
+def btn_add_click():
+    global A
+    global operator
+    global val
+    A = int(val)
+    operator = "+"
+    val = val + "+"
+    data.set(val)
 
-minus = Button(btns_frame, text="-", fg="black", width=10, height=3, bd=0, bg="#92A9BD", cursor="hand2",
-               command=lambda: btn_click("-")).grid(row=2, column=3, padx=1, pady=1)
 
-# 4th row
+def btn_sub_click():
+    global A
+    global operator
+    global val
+    A = int(val)
+    operator = "-"
+    val = val + "-"
+    data.set(val)
 
-one = Button(btns_frame, text="1", fg="black", width=10, height=3, bd=0, bg="#F2FFE9", cursor="hand2",
-             command=lambda: btn_click(1)).grid(row=3, column=0, padx=1, pady=1)
 
-two = Button(btns_frame, text="2", fg="black", width=10, height=3, bd=0, bg="#F2FFE9", cursor="hand2",
-             command=lambda: btn_click(2)).grid(row=3, column=1, padx=1, pady=1)
+def btn_mul_click():
+    global A
+    global operator
+    global val
+    A = int(val)
+    operator = "*"
+    val = val + "*"
+    data.set(val)
 
-three = Button(btns_frame, text="3", fg="black", width=10, height=3, bd=0, bg="#F2FFE9", cursor="hand2",
-               command=lambda: btn_click(3)).grid(row=3, column=2, padx=1, pady=1)
 
-plus = Button(btns_frame, text="+", fg="black", width=10, height=3, bd=0, bg="#92A9BD", cursor="hand2",
-              command=lambda: btn_click("+")).grid(row=3, column=3, padx=1, pady=1)
+def btn_div_click():
+    global A
+    global operator
+    global val
+    A = int(val)
+    operator = "/"
+    val = val + "/"
+    data.set(val)
 
-# 5th row
 
-zero = Button(btns_frame, text="0", fg="black", width=21, height=3, bd=0, bg="#F2FFE9", cursor="hand2",
-              command=lambda: btn_click(0)).grid(row=4, column=0, columnspan=2, padx=1, pady=1)
+def clr_click():
+    global A
+    global operator
+    global val
+    val = ""
+    A = 0
+    operator = ""
+    data.set(val)
 
-point = Button(btns_frame, text=".", fg="black", width=10, height=3, bd=0, bg="#eee", cursor="hand2",
-               command=lambda: btn_click(".")).grid(row=4, column=2, padx=1, pady=1)
 
-equals = Button(btns_frame, text="=", fg="black", width=10, height=3, bd=0, bg="#92A9BD", cursor="hand2",
-                command=lambda: bt_equal()).grid(row=4, column=3, padx=1, pady=1)
+def btn_ans():
+    global A
+    global operator
+    global val
+    val2 = val
+    if operator == "+":
+        x = int((val2.split("+")[1]))
+        C = A + x
+        data.set(C)
+        val = str(C)
+    elif operator == "-":
+        x = int((val2.split("-")[1]))
+        C = A - x
+        data.set(C)
+        val = str(C)
+    elif operator == "*":
+        x = int((val2.split("*")[1]))
+        C = A * x
+        data.set(C)
+        val = str(C)
+    elif operator == "/":
+        x = int((val2.split("/")[1]))
+        if x == 0:
+            messagebox.showerror("Error!!", "Division by 0 is not supported")
+            A = ""
+            val = ""
+            data.set(val)
+        else:
+            C = int(A / x)
+            data.set(C)
+            val = str(C)
 
-calculator.mainloop()
+
+
+
+data = StringVar()
+
+lbl = Label(root, text="Label", anchor=SE, font=("Verdana", 20), textvariable=data, background="#1C1C1C",fg="#D4D4D2",)
+lbl.pack(expand=True, fill="both")
+
+row1 = Frame(root, bg="#000000")
+row1.pack(expand=True, fill="both")
+
+row2 = Frame(root)
+row2.pack(expand=True, fill="both")
+
+row3 = Frame(root)
+row3.pack(expand=True, fill="both")
+
+row4 = Frame(root)
+row4.pack(expand=True, fill="both")
+
+# ROW 1 Button details
+btn1 = Button(row1, text="1", font=("Verdana", 22), relief=GROOVE, border=0, command=btn1_click, cursor="hand2")
+btn1.pack(side=LEFT, expand=True, fill="both")
+
+btn2 = Button(row1, text="2", font=("Verdana", 22), relief=GROOVE, border=0, command=btn2_click,cursor="hand2")
+btn2.pack(side=LEFT, expand=True, fill="both")
+
+btn3 = Button(row1, text="3", font=("Verdana", 22), relief=GROOVE, border=0, command=btn3_click, cursor="hand2")
+btn3.pack(side=LEFT, expand=True, fill="both")
+
+btn4 = Button(row1, text="+", font=("Verdana", 22), relief=GROOVE, border=0, command=btn_add_click, fg="#4285F4", cursor="hand2")
+btn4.pack(side=LEFT, expand=True, fill="both")
+
+# ROW 2 Button details
+btn1 = Button(row2, text="4", font=("Verdana", 22), relief=GROOVE, border=0, command=btn4_click, cursor="hand2")
+btn1.pack(side=LEFT, expand=True, fill="both")
+
+btn2 = Button(row2, text="5", font=("Verdana", 22), relief=GROOVE, border=0, command=btn5_click, cursor="hand2")
+btn2.pack(side=LEFT, expand=True, fill="both")
+
+btn3 = Button(row2, text="6", font=("Verdana", 22), relief=GROOVE, border=0, command=btn6_click, cursor="hand2")
+btn3.pack(side=LEFT, expand=True, fill="both")
+
+btn4 = Button( row2, text="-", font=("Verdana", 22), relief=GROOVE, border=0, command=btn_sub_click, fg="#4285F4", cursor="hand2")
+btn4.pack(side=LEFT, expand=True, fill="both")
+
+# ROW 3 Button details
+btn1 = Button(row3, text="7", font=("Verdana", 22), relief=GROOVE, border=0, command=btn7_click, cursor="hand2")
+btn1.pack(side=LEFT, expand=True, fill="both")
+
+btn2 = Button(row3, text="8", font=("Verdana", 22), relief=GROOVE, border=0, command=btn8_click, cursor="hand2")
+btn2.pack(side=LEFT, expand=True, fill="both")
+
+btn3 = Button(row3, text="9", font=("Verdana", 22), relief=GROOVE, border=0, command=btn9_click, cursor="hand2")
+btn3.pack(side=LEFT, expand=True, fill="both")
+
+btn4 = Button(row3, text="*", font=("Verdana", 22), relief=GROOVE, border=0, command=btn_mul_click, fg="#4285F4", cursor="hand2")
+btn4.pack(side=LEFT, expand=True, fill="both")
+
+# ROW 4 Button details
+btn1 = Button(row4, text="c", font=("Verdana", 22), relief=GROOVE, border=0, command=clr_click, cursor="hand2")
+btn1.pack(side=LEFT, expand=True, fill="both")
+
+btn2 = Button(row4, text="0", font=("Verdana", 22), relief=GROOVE, border=0, command=btn0_click, cursor="hand2")
+btn2.pack(side=LEFT, expand=True, fill="both")
+
+btn3 = Button(row4, text="=", font=("Verdana", 22), relief=GROOVE, border=0, command=btn_ans, cursor="hand2")
+btn3.pack(side=LEFT, expand=True, fill="both")
+
+btn4 = Button(row4, text="/", font=("Verdana", 22), relief=FLAT, border=0, command=btn_div_click, fg="#4285F4", cursor="hand2")
+btn4.pack(side=LEFT, expand=True, fill="both")
+
+root.mainloop()
